@@ -1,0 +1,74 @@
+13. Roman to Integer
+
+
+var romanToInt = function(s) {
+    const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    let res = 0;
+   s.split('').forEach( (num, i) => {
+        if(map[num] < map[s[i + 1]]) res -= map[num];
+        else res += map[num];
+    });
+    return res;
+};
+
+
+
+14. Longest Common Prefix
+
+var longestCommonPrefix= function(strs) {
+let prefix = strs[0]
+for (let i= 1; i <strs.length; i++){
+while(strs[i].indexOf(prefix) !== 0){
+prefix= prefix.substring(0, prefix.length-1)
+}
+}
+return prefix
+};
+
+20. Valid Parentheses
+
+
+var isValid = function(s) {
+let obj = {
+"(": ")",
+"[": "]",
+"{": "}",
+},
+stack = []
+for (let i = 0; i < s.length; i++){
+if(s[i] === "(" || s[i] === "[" || s[i] === "{"){
+stack.push(s[i])
+} else if (s[i] !== obj[stack.pop()]){
+return false
+}
+}
+return stack.length === 0
+};
+
+
+
+28. Find the Index of the First Occurrence in a String
+
+var strStr = function(haystack, needle) {
+if(haystack === needle || needle === ""){
+return 0;
+}
+for(let i = 0; i<haystack.length; i++){
+if(haystack[i] === needle [0]) {
+let sub = haystack.substring(i, i+needle.length);
+if(sub === needle) {
+return i;
+}
+}
+}
+return -1;
+};
+
+58. Length of Last Word
+
+
+var lengthOfLastWord = function(s) {
+if(s.length == 0) return 0;
+let array=s.trim().split(' ');
+return array[array.length-1].length;
+};
